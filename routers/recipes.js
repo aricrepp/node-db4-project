@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../data/config');
+const db = require('../models/recipes');
 const { nextTick } = require('process');
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/api/recipes', async (req, res) => {
   }
 });
 
-router.get('/api/recipes/:id/shopping-list', async (req, res) => {
+router.get('/api/recipes/:id/shoppingList', async (req, res) => {
   try {
     const list = await db.getShoppingList(req.params.id);
     res.status(200).json(list);
